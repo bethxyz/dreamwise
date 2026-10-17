@@ -1,0 +1,103 @@
+.starfield-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 76% 17%,
+    rgb(130 151 104 / 4%),
+    transparent 48%
+  );
+}
+
+.starfield-star {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  background: #c6ceb5;
+  opacity: 0.25;
+  animation: starfield-twinkle 7s ease-in-out infinite alternate;
+}
+
+.starfield-star-bright {
+  background: #e6e2cc;
+  box-shadow: 0 0 5px 1px rgb(207 212 182 / 10%);
+}
+
+.celestial-mark {
+  flex: 0 0 auto;
+  display: block;
+  color: #c4cbb0;
+}
+
+.celestial-illustration {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 1;
+  position: relative;
+  pointer-events: none;
+  isolation: isolate;
+}
+
+.celestial-chart {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.celestial-orbit-motion {
+  transform-origin: 202px 196px;
+  animation: celestial-orbit 100s linear infinite;
+}
+
+.celestial-chart-sparkle {
+  animation: celestial-sparkle 5s ease-in-out infinite alternate;
+}
+
+.celestial-chart-sparkle-late {
+  animation-delay: -3s;
+  animation-duration: 7s;
+}
+
+@keyframes starfield-twinkle {
+  0%,
+  15% {
+    opacity: 0.12;
+  }
+  65%,
+  100% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes celestial-orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes celestial-sparkle {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .starfield-star,
+  .celestial-orbit-motion,
+  .celestial-chart-sparkle {
+    animation: none;
+  }
+
+  .starfield-star {
+    opacity: 0.3;
+  }
+}
